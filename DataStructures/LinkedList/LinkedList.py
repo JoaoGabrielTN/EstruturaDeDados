@@ -28,6 +28,17 @@ class SinglyLinkedList:
             new_node.next = self.head
             self.head = new_node
 
+    def add_last(self, data):
+        """ Adiciona um elemento à última posição da lista """
+        if self.is_empty():
+            self.head = SinglyListNode(data)
+
+        node = self.head
+        while node.next is not None:
+            node = node.next
+
+        node.next = SinglyListNode(data)
+
     def pop(self):
         """ Deleta o último elemento adicionado à lista """
         if self.is_empty():

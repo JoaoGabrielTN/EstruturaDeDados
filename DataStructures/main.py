@@ -9,4 +9,5 @@ lista_encadeada.show()
 print(lista_encadeada.search(30))
 
 lista_encadeada.pop()
+lista_encadeada.add_last(40)
 lista_encadeada.show()
