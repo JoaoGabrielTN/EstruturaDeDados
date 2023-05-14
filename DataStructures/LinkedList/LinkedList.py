@@ -49,8 +49,8 @@ class SinglyLinkedList:
     def show(self):
         """ Mosta todos os elementos da lista """
         node = self.head
-        while node is not None:
-            print(node.data)
+        while node.next is not None:
+            print(node.data, end=" ")
             node = node.next
 
     def search(self, data):
@@ -58,12 +58,65 @@ class SinglyLinkedList:
             caso a lista esteja vazia, retorna None"""
         if self.is_empty():
             return None
+        
         node = self.head
-        while node.data != data:
-            node = node.next
-        return node
+        while node is not None:
+            if node.data == data:
+                return node
+            else:
+                node = node.next
+                
+        return None
 
 
 class DoublyLinkedList:
     def __init__(self):
-        self.head
+        self.head = None
+        self.tail = None
+    
+    #def __getitem__(self, pos):
+        
+
+    def is_empty(self):
+        return (self.head is None) and (self.tail is None)
+    
+    def push(self, data):
+        new_head = DoublyListNode(data)
+        if self.is_empty():
+            self.tail = new_head
+        else:
+            new_head.next = self.head
+            self.head.previous = new_head
+        self.head = new_head
+    
+    def size(self):
+        size_count = 0
+        if self.is_empty():
+            return size_count
+        else:
+            node = self.head
+            while node is not None:
+                size_count = size_count + 1
+            return size_count
+        
+    def pop(self):
+        if self.is_empty():
+            print("Lista vazia")
+        else:
+            self.head = self.head.next
+            if self.head is not None:
+                self.head.previous = None
+    
+    def showt(self):
+        node = self.tail
+        while node is not None:
+            print(node.data, end=" ")
+            node = node.previous
+        
+    def show(self):
+        """ Mosta todos os elementos da lista """
+        node = self.head
+        while node is not None:
+            print(node.data, end=" ")
+            node = node.next
+    
